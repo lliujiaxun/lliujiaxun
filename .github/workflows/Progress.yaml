@@ -23,3 +23,5 @@ jobs:
           git config user.email 'lliujiaxun+github-actions[bot]@users.noreply.github.com'
           git commit -am "bot: update README.md automatically"
           git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB-PROFILE-FLOWS }}
