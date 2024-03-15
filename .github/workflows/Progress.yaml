@@ -17,11 +17,17 @@ jobs:
           node-version: "14.x"
       - name: Update README.md
         run: node date.js > README.md
-      - name: Commit change & Push
-        env:
-          github_token: ${{ secrets.GITHUB-PROFILE-FLOWS }}
-        run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email 'lliujiaxun+github-actions[bot]@users.noreply.github.com'
-          git commit -am "bot: update README.md automatically"
-          git push
+      - name: 部署文档
+          uses: JamesIves/github-pages-deploy-action@v4
+          with:
+            # 这是文档部署到的分支名称
+            branch: master
+            folder: .
+      # - name: Commit change & Push
+      #   env:
+      #     github_token: ${{ secrets.GITHUB-PROFILE-FLOWS }}
+      #   run: |
+      #     git config user.name 'github-actions[bot]'
+      #     git config user.email 'lliujiaxun+github-actions[bot]@users.noreply.github.com'
+      #     git commit -am "bot: update README.md automatically"
+      #     git push
